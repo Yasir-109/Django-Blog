@@ -1,0 +1,58 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<h1>Profile Page</h1>
+
+<br>
+<div class="card mb-3">
+    <div class="row g-0">
+        <div class="col-md-4">
+            {% if page_user.user.profile_pic %}
+            <img src="{{post.author.profile.profile_pic.url}}" class="img-fluid rounded-start" alt="profile pic">
+            {% else %}
+            <img src="{% static 'theblog/images/no-profile-picture-6-1024x1024.jpg' %}" class="img-fluid rounded-start" alt="...">
+            {% endif %}
+        </div>
+        <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">
+                    
+                        {{page_user.user.first_name}} {{page_user.user.last_name}}
+                </h5>
+                <p class="card-text"><small class="text-body-secondary">
+                        <a href="mailto:{{page_user.user.email}}">{{page_user.user.email}}</a>
+                    </small></p>
+                <p class="card-text"><small class="text-body-secondary">Member since {{page_user.user.date_joined|date:"F Y"}}</small></p>
+                <small>
+                    <p class="text-body-secondary">
+                        {% if page_user.user.website_url %}
+                        <a href="{{page_user.user.website}}">{{page_user.user.website_url}}</a>
+                        
+                        {% endif %}
+                    </p>
+                    <p>
+                        {% if page_user.user.facebook_url %}
+                        <a href="{{page_user.user.facebook_url}}">FaceBook | </a>
+                        
+                        {% endif %}
+                        {% if page_user.user.instagram_url %}
+                        <a href="{{page_user.user.instagram_url}}">Instagram | </a>
+                        
+                        {% endif %}
+                        {% if page_user.user.github_url %}
+                        <a href="{{page_user.user.github_url}}">Github | </a>
+                        
+                        {% endif %}
+                        {% if page_user.user.linkedin_url %}
+                        <a href="{{page_user.user.linkedin_url}}">LinkedIn</a>
+                         
+                        {% endif %}
+                    </p>
+                </small>
+                <p class="card-text">{{page_user.user.profile.bio}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

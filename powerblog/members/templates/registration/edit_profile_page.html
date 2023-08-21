@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+{% block title%}Edit Suite{% endblock %}
+{% block content %}
+
+{% if user.is_authenticated %}
+    {% if user.id == profile.user.id %}
+        <h1>Edit Profile Page</h1>
+
+        <br>
+        <div class="form-group">
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-success">Update</button>
+            </form>
+        </div>
+    {% else %}
+        <h1>Not Your Profile</h1>
+    {% endif %}
+{% else %}
+
+<h1>Not Logged In</h1>
+
+{% endif %}
+
+{% endblock %}
