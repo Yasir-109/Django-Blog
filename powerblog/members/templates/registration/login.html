@@ -9,9 +9,25 @@
 <div class="form-group">
     <form method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+            <div class="mb-3">
+              <label for="Username" class="form-label">UserName</label>
+              <input type="text" class="form-control" id="Username" name="username">
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label">Password</label>
+              <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+            </div>
         <button type="submit" class="btn btn-success">Login</button>
     </form>
+
+    {% load socialaccount %}
+    <h1>Google Login</h1>
+    <p>Login using your Google account</p>
+    <a href="{% provider_login_url 'google' next='/accounts/social/login/callback/'%}" class="btn btn-warning">
+        Login with Google
+    </a>
+    <p>Not Signed Up, <a href="{% url 'register' %}">Register</a></p>
+
 </div>
 
 {% endblock %}

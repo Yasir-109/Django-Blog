@@ -19,7 +19,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav mr-auto">
           {% if cat_menu %}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -43,13 +43,8 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'add_category' %}">Add Category</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'edit_profile' %}">Edit Profile</a>
-          </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
-          </li>
+          
           {% else %}
           <li class="nav-item">
             <a class="nav-link" aria-current="page" href="{% url 'login' %}">Login</a>
@@ -60,6 +55,30 @@
 
           {% endif %}
         </ul>
+
+        <!-- Right Side Of Navbar -->
+        <ul class="navbar-nav ml-auto">
+          {% if user.is_authenticated %}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{ user.first_name }} {{ user.last_name }}
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{% url 'edit_profile' %}">User Settings</a></li>
+              {% if user.profile.id %}
+              <li><a class="dropdown-item" href="{% url 'edit_profile_page' user.profile.id %}">Edit Profile</a></li>
+              <li><a class="dropdown-item" href="{% url 'show_profile_page' user.profile.id%}">Profile Page</a></li>
+              {% else %}
+              <li><a class="dropdown-item" href="{% url 'create_profile_page' %}">Create Profile</a></li>
+              {% endif %}
+              <li>
+                <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+              </li>
+            </ul>
+          </li>
+          {% endif %}
+        </ul>
+
       </div>
     </div>
   </nav>
