@@ -14,4 +14,5 @@ urlpatterns = [
     path('<int:pk>/edit_profile_page/', EditProfilePageView.as_view(), name  = 'edit_profile_page'),
     path('create_profile_profile_page/', CreateProfilePageView.as_view(), name  = 'create_profile_page'),
     path('social/signup/', views.signup_redirect, name='signup_redirect'),
+    path('deactivate-google', views.deactivate_google_account, name='deactivate_google')
 ]

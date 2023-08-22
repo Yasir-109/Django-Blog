@@ -8,7 +8,7 @@
     <div class="row g-0">
         <div class="col-md-4">
             {% if page_user.user.profile_pic %}
-            <img src="{{post.author.profile.profile_pic.url}}" class="img-fluid rounded-start" alt="profile pic">
+            <img src="{{page_user.user.profile_pic.url}}" class="img-fluid rounded-start" alt="profile pic">
             {% else %}
             <img src="{% static 'theblog/images/no-profile-picture-6-1024x1024.jpg' %}" class="img-fluid rounded-start" alt="...">
             {% endif %}

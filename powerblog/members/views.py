@@ -7,6 +7,7 @@ from .forms import SignUpForm, EditProfileForm, ProfilePageForm
 from django.views.generic import DetailView, CreateView
 from theblog.models import Profile
 from django.contrib import messages
+from allauth.socialaccount.models import SocialAccount
 # Create your views here.
 
 class UserRegisterView(generic.CreateView):
@@ -60,4 +61,21 @@ class CreateProfilePageView(CreateView):
     
 def signup_redirect(request):
     messages.error(request, "Something wrong here, it may be that you already have an account!")
+    return redirect('home')
+
+def deactivate_google_account(request):
+    if request.user.is_authenticated:
+        google_social_account = SocialAccount.objects.filter(user=request.user, provider='google').first()
+
+        if google_social_account:
+            google_social_account.delete()
+            messages.success(request, "Your Google account has been disconnected successfully!")
+
+
+        else:
+            messages.error(request, "You do not have a Google account connected to your account!")
+
+    else:
+        messages.error(request, "You must be logged in to disconnect your Google account!")
+
     return redirect('home')
