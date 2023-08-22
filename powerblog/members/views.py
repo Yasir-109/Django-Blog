@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import generic
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm, PasswordChangeForm
 from django.contrib.auth.views import PasswordChangeView
@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from .forms import SignUpForm, EditProfileForm, ProfilePageForm
 from django.views.generic import DetailView, CreateView
 from theblog.models import Profile
+from django.contrib import messages
 # Create your views here.
 
 class UserRegisterView(generic.CreateView):
@@ -56,3 +57,7 @@ class CreateProfilePageView(CreateView):
     def form_valid(self, form):
         form.instance.user = self.request.user
         return super().form_valid(form)
+    
+def signup_redirect(request):
+    messages.error(request, "Something wrong here, it may be that you already have an account!")
+    return redirect('home')

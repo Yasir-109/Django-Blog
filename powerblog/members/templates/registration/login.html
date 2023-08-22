@@ -23,9 +23,15 @@
     {% load socialaccount %}
     <h1>Google Login</h1>
     <p>Login using your Google account</p>
-    <a href="{% provider_login_url 'google' next='/accounts/social/login/callback/'%}" class="btn btn-warning">
+    <a href="{% provider_login_url 'google' next='home'%}" class="btn btn-warning">
         Login with Google
     </a>
+    <!-- <button class="btn btn-outline-info">
+      <a href="{% provider_login_url 'google' next='/accounts/google/login/callback/'%}">
+        <i class="fab fa-google"></i>
+        Login with Google
+      </a>
+    </button> -->
     <p>Not Signed Up, <a href="{% url 'register' %}">Register</a></p>
 
 </div>

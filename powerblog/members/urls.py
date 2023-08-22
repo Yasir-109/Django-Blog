@@ -13,4 +13,5 @@ urlpatterns = [
     path('<int:pk>/profile/', ShowProfilePageView.as_view(), name  = 'show_profile_page'),
     path('<int:pk>/edit_profile_page/', EditProfilePageView.as_view(), name  = 'edit_profile_page'),
     path('create_profile_profile_page/', CreateProfilePageView.as_view(), name  = 'create_profile_page'),
+    path('social/signup/', views.signup_redirect, name='signup_redirect'),
 ]
