@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "31350d3fcb42a038a252fca85efbaffd749d4b9653f27319a04de71ec3031d2b"
+            "sha256": "9ecd017c3e26f46fcfde288b40d51cfe95361c9a67a3de1f9357fb0afb500746"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -236,10 +236,10 @@
         },
         "django-allauth": {
             "hashes": [
-                "sha256:120e265f802b65738899c6cb627b827fde46a4d03067034c633f516c2adf3e3e"
+                "sha256:6b9dee8bbfa4b9e4c346a1cda3b880c230c98fbe71253d7c48ae0df0d86a2642"
             ],
             "index": "pypi",
-            "version": "==0.54.0"
+            "version": "==0.55.0"
         },
         "django-sslserver": {
             "hashes": [
@@ -360,6 +360,14 @@
             ],
             "markers": "python_version >= '3.5'",
             "version": "==0.4.4"
+        },
+        "stripe": {
+            "hashes": [
+                "sha256:d8f315c9f2ceb429ad23cd98a50e14cd0e973b3ffbd920f77e5a2da75a94693e",
+                "sha256:f3cf6e619a91d1a49ddde417d444e47435cc472f394f2fa0d82f3d127d8cc17d"
+            ],
+            "index": "pypi",
+            "version": "==6.0.0"
         },
         "tzdata": {
             "hashes": [

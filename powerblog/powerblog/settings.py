@@ -47,6 +47,9 @@ INSTALLED_APPS = [
     'allauth.account', # must
     'allauth.socialaccount', # must
     'allauth.socialaccount.providers.google', # new
+
+    #payment
+    'payments.apps.PaymentsConfig'
 ]
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -175,3 +178,8 @@ ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home'
+
+STRIPE_PUBLISHABLE_KEY = 'pk_test_51NiC2KF01CkaKFwNtukUXGDUeJM3gbyXOPR1aG3WYQ9poTO5O18EESiyeEt4LWu7QVAzdIAzI5MoMIAzK42FfQ4Z00HvbDevL9'
+STRIPE_SECRET_KEY = 'sk_test_51NiC2KF01CkaKFwNwu1jgX21ji9FyNPSYDzLVMc7mqR2HOE6HdY4DkoMtUinmvG4CjTz5m7Ybby3mOQ3dqKspANM00IKsf5SDl'
+
+STRIPE_ENDPOINT_SECRET = 'whsec_1864e79f1f7e6e01473ed62452fad462116e94b81648487cd62389909647e0b1'
