@@ -1,0 +1,10 @@
+{% extends 'base.html'%}
+{% block title %}Your Subscription{% endblock %}
+{% block content %}
+
+<h1>Your Subscription Details</h1>
+    <p>Current Period End Date: {{ current_period_end }}</p>
+    <p>Next Billing Date: {{ next_billing_date }}</p>
+
+{% endblock %}
+

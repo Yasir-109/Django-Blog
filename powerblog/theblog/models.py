@@ -50,6 +50,17 @@ class Profile(models.Model):
     twitter_url = models.CharField(max_length=255, null=True, blank=True)
     linkedin_url = models.CharField(max_length=255, null=True, blank=True)
 
+    subscription_price_id = models.CharField(max_length=100, blank=True, null=True)
+    subscription_status = models.CharField(max_length=20, blank=True, null=True)
+    subscription_session_id = models.CharField(max_length=100, blank=True, null=True)
+    
+    subscription_cancel_at = models.DateTimeField(blank=True, null=True)
+    subscription_created = models.DateTimeField(blank=True, null=True)
+    
+    subscription_start_date = models.DateTimeField(blank=True, null=True)
+    stripe_customer_id = models.CharField(max_length=100, blank=True, null=True)
+
+
     def __str__(self):
         return str(self.user)
     

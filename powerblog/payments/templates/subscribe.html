@@ -3,97 +3,129 @@
 {% load static %}
 {% block link %}
 <link rel="stylesheet" href="{% static 'main.css' %}">
+<script src="https://js.stripe.com/v3/"></script>
 {% endblock %}
 
 {% block content %}
-<link rel="stylesheet" href="https://cdn.lineicons.com/3.0/lineicons.css"> 
+<link rel="stylesheet" href="https://cdn.lineicons.com/3.0/lineicons.css">
 <section class="price_plan_area section_padding_130_80" id="pricing">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-12 col-sm-8 col-lg-6">
-                <!-- Section Heading-->
-                <div class="section-heading text-center wow fadeInUp" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                    <h6>Pricing Plans</h6>
-                    <h3>Choose Your Plan</h3>
-                    <p>Select a plan that suits your needs.</p>
-                    <div class="line"></div>
+                <div class="col-12 col-sm-8 col-lg-6">
+                    <!-- Section Heading-->
+                    <div class="section-heading text-center wow fadeInUp" data-wow-delay="0.2s"
+                        style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                        <h6>Pricing Plans</h6>
+                        <h3>Choose Your Plan</h3>
+                        <p>Select a plan that suits your needs.</p>
+                        <div class="line"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <!-- Basic Monthly Plan -->
+                <div class="col-12 col-sm-8 col-md-6 col-lg-3">
+                    <div class="single_price_plan wow fadeInUp animated" data-wow-delay="0.2s"
+                        style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                        <div class="title">
+                            <h3>Basic</h3>
+                            <p>Monthly Plan</p>
+                            <div class="line"></div>
+                        </div>
+                        <div class="price">
+                            <h4>$5.00</h4>
+                        </div>
+                        <div class="description">
+                            <p><i class="lni lni-checkmark-circle"></i>Duration: 1 Month</p>
+                            <p><i class="lni lni-checkmark-circle"></i>Access to Basic Features</p>
+                        </div>
+                        <div class="button">
+                            <form action="{% url 'create_subscription_session' %}" method="POST">
+                                <input type="hidden" name="priceId" value="price_1NiFc2F01CkaKFwNpggPdjYa" />
+                                <button type="submit" class="btn btn-light btn-2">Subscribe</button>
+                            </form>
+                            <!-- <a id="basicmonth" class="btn btn-light btn-2" href="#">Get Started</a> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Basic Yearly Plan -->
+                <div class="col-12 col-sm-8 col-md-6 col-lg-3">
+                    <div class="single_price_plan wow fadeInUp animated" data-wow-delay="0.2s"
+                        style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                        <div class="title">
+                            <h3>Basic</h3>
+                            <p>Yearly Plan</p>
+                            <div class="line"></div>
+                        </div>
+                        <div class="price">
+                            <h4>$45.00</h4>
+                        </div>
+                        <div class="description">
+                            <p><i class="lni lni-checkmark-circle"></i>Duration: 1 Year</p>
+                            <p><i class="lni lni-checkmark-circle"></i>Access to Basic Features</p>
+                        </div>
+                        <div class="button">
+                            <form action="{% url 'create_subscription_session' %}" method="POST">
+                            <input type="hidden" name="priceId" value="price_1NiFc2F01CkaKFwNWvqoxtjE" />
+                            <button type="submit" class="btn btn-light btn-2">Subscribe</button>
+                            </form>
+                            <!-- <a id="basicyear" class="btn btn-success btn-2" href="#">Get Started</a> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Premium Monthly Plan -->
+                <div class="col-12 col-sm-8 col-md-6 col-lg-3">
+                    <div class="single_price_plan wow fadeInUp animated" data-wow-delay="0.2s"
+                        style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                        <div class="title">
+                            <h3>Premium</h3>
+                            <p>Monthly Plan</p>
+                            <div class="line"></div>
+                        </div>
+                        <div class="price">
+                            <h4>$7.00</h4>
+                        </div>
+                        <div class="description">
+                            <p><i class="lni lni-checkmark-circle"></i>Duration: 1 Month</p>
+                            <p><i class="lni lni-checkmark-circle"></i>Access to Premium Features</p>
+                        </div>
+                        <div class="button">
+                            <form action="{% url 'create_subscription_session' %}" method="POST">
+                            <input type="hidden" name="priceId" value="price_1NiFeRF01CkaKFwNq2dGjLtq" />
+                            <button type="submit" class="btn btn-dark">Subscribe</button>
+                            </form>
+                            <!-- <a id="premmonth" class="btn btn-warning" href="#">Get Started</a> -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Premium Yearly Plan -->
+                <div class="col-12 col-sm-8 col-md-6 col-lg-3">
+                    <div class="single_price_plan wow fadeInUp animated" data-wow-delay="0.2s"
+                        style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
+                        <div class="title">
+                            <h3>Premium</h3>
+                            <p>Yearly Plan</p>
+                            <div class="line"></div>
+                        </div>
+                        <div class="price">
+                            <h4>$66.00</h4>
+                        </div>
+                        <div class="description">
+                            <p><i class="lni lni-checkmark-circle"></i>Duration: 1 Year</p>
+                            <p><i class="lni lni-checkmark-circle"></i>Access to Premium Features</p>
+                        </div>
+                        <div class="button">
+                            <form action="{% url 'create_subscription_session' %}" method="POST">
+                            <input type="hidden" name="priceId" value="price_1NiFeRF01CkaKFwN4UWnfAbA" />
+                            <button type="submit" class="btn btn-dark">Subscribe</button>
+                            </form>
+                            <!-- <a id="premyear" class="btn btn-dark" href="#">Get Started</a> -->
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="row justify-content-center">
-            <!-- Basic Monthly Plan -->
-            <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-                <div class="single_price_plan wow fadeInUp animated" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                    <div class="title">
-                        <h3>Basic</h3>
-                        <p>Monthly Plan</p>
-                        <div class="line"></div>
-                    </div>
-                    <div class="price">
-                        <h4>$5.00</h4>
-                    </div>
-                    <div class="description">
-                        <p><i class="lni lni-checkmark-circle"></i>Duration: 1 Month</p>
-                        <p><i class="lni lni-checkmark-circle"></i>Access to Basic Features</p>
-                    </div>
-                    <div class="button"><a id="basicmonth" class="btn btn-light btn-2" href="#">Get Started</a></div>
-                </div>
-            </div>
-            <!-- Basic Yearly Plan -->
-            <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-                <div class="single_price_plan wow fadeInUp animated" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                    <div class="title">
-                        <h3>Basic</h3>
-                        <p>Yearly Plan</p>
-                        <div class="line"></div>
-                    </div>
-                    <div class="price">
-                        <h4>$45.00</h4>
-                    </div>
-                    <div class="description">
-                        <p><i class="lni lni-checkmark-circle"></i>Duration: 1 Year</p>
-                        <p><i class="lni lni-checkmark-circle"></i>Access to Basic Features</p>
-                    </div>
-                    <div class="button"><a id="basicyear" class="btn btn-success btn-2" href="#">Get Started</a></div>
-                </div>
-            </div>
-            <!-- Premium Monthly Plan -->
-            <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-                <div class="single_price_plan wow fadeInUp animated" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                    <div class="title">
-                        <h3>Premium</h3>
-                        <p>Monthly Plan</p>
-                        <div class="line"></div>
-                    </div>
-                    <div class="price">
-                        <h4>$7.00</h4>
-                    </div>
-                    <div class="description">
-                        <p><i class="lni lni-checkmark-circle"></i>Duration: 1 Month</p>
-                        <p><i class="lni lni-checkmark-circle"></i>Access to Premium Features</p>
-                    </div>
-                    <div class="button"><a id="premmonth" class="btn btn-warning" href="#">Get Started</a></div>
-                </div>
-            </div>
-            <!-- Premium Yearly Plan -->
-            <div class="col-12 col-sm-8 col-md-6 col-lg-4">
-                <div class="single_price_plan wow fadeInUp animated" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInUp;">
-                    <div class="title">
-                        <h3>Premium</h3>
-                        <p>Yearly Plan</p>
-                        <div class="line"></div>
-                    </div>
-                    <div class="price">
-                        <h4>$66.00</h4>
-                    </div>
-                    <div class="description">
-                        <p><i class="lni lni-checkmark-circle"></i>Duration: 1 Year</p>
-                        <p><i class="lni lni-checkmark-circle"></i>Access to Premium Features</p>
-                    </div>
-                    <div class="button"><a id="premyear" class="btn btn-dark" href="#">Get Started</a></div>
-                </div>
-            </div>
-        </div>
-    </div>
 </section>
+<script src="{% static 'main.js' %}"></script>
+
 {% endblock %}
