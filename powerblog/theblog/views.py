@@ -5,11 +5,18 @@ from .models import Post, Category, Comment
 from .forms import PostForm, EditForm, CommentForm
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
+from django.conf import settings
+from django.core.cache.backends.base import DEFAULT_TIMEOUT
+from django.views.decorators.cache import cache_page
 
 # Create your views here.
 # def home(request):
 #     return render(request, 'home.html', {})
 
+CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
+
+
+@cache_page(CACHE_TTL)
 class HomeView(ListView):
     model = Post
     template_name = 'home.html'
@@ -23,6 +30,7 @@ class HomeView(ListView):
         return context
 
 
+@cache_page(CACHE_TTL)
 class ArticleView(DetailView):
     model = Post
     template_name = 'article_details.html'
@@ -39,6 +47,7 @@ class ArticleView(DetailView):
         context["liked"] = liked
         return context
 
+@cache_page(CACHE_TTL)
 class AddPostView(CreateView):
     model = Post
     form_class = PostForm
@@ -46,27 +55,31 @@ class AddPostView(CreateView):
     #fields = '__all__'
     #fields = ('title', 'body')
 
+@cache_page(CACHE_TTL)
 class UpdatePostView(UpdateView):   
     model = Post
     form_class = EditForm
     template_name = 'update_post.html'
     #fields = ['title', 'title_tag', 'body']
 
+@cache_page(CACHE_TTL)
 class DeletePostView(DeleteView):
     model = Post
     template_name = 'delete_post.html'
     success_url = reverse_lazy("home")
 
-
+@cache_page(CACHE_TTL)
 class AddCategoryView(CreateView):
     model = Category
     template_name = 'add_category.html'
     fields = '__all__'
 
+@cache_page(CACHE_TTL)
 def CategoryView(request, cat):
     category_posts = Post.objects.filter(category=cat.replace("-", ' '))
     return render(request, 'categories.html', {'cat':cat.title().replace('-',' '), 'category_posts':category_posts})
 
+@cache_page(CACHE_TTL)
 def CategoryListView(request):
     cat_menu_list = Category.objects.all()
     return render(request, 'category_list.html', {'cat_menu_list':cat_menu_list})

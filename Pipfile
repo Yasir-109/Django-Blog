@@ -8,6 +8,8 @@ django-allauth = "*"
 django-sslserver = "*"
 google-auth-oauthlib = "*"
 stripe = "*"
+django-redis = "*"
+redis = "*"
 
 [dev-packages]
 
