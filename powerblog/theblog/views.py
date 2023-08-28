@@ -16,8 +16,8 @@ from django.views.decorators.cache import cache_page
 CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT)
 
 
-@cache_page(CACHE_TTL)
 class HomeView(ListView):
+    cache_page = CACHE_TTL
     model = Post
     template_name = 'home.html'
     ordering = ['-post_date']
@@ -30,8 +30,8 @@ class HomeView(ListView):
         return context
 
 
-@cache_page(CACHE_TTL)
 class ArticleView(DetailView):
+    cache_page = CACHE_TTL
     model = Post
     template_name = 'article_details.html'
 
@@ -47,40 +47,40 @@ class ArticleView(DetailView):
         context["liked"] = liked
         return context
 
-@cache_page(CACHE_TTL)
 class AddPostView(CreateView):
+    cache_page = CACHE_TTL
     model = Post
     form_class = PostForm
     template_name = 'add_post.html'
     #fields = '__all__'
     #fields = ('title', 'body')
 
-@cache_page(CACHE_TTL)
 class UpdatePostView(UpdateView):   
+    cache_page = CACHE_TTL
     model = Post
     form_class = EditForm
     template_name = 'update_post.html'
     #fields = ['title', 'title_tag', 'body']
 
-@cache_page(CACHE_TTL)
 class DeletePostView(DeleteView):
+    cache_page = CACHE_TTL
     model = Post
     template_name = 'delete_post.html'
     success_url = reverse_lazy("home")
 
-@cache_page(CACHE_TTL)
 class AddCategoryView(CreateView):
+    cache_page = CACHE_TTL
     model = Category
     template_name = 'add_category.html'
     fields = '__all__'
 
-@cache_page(CACHE_TTL)
 def CategoryView(request, cat):
+    cache_page = CACHE_TTL
     category_posts = Post.objects.filter(category=cat.replace("-", ' '))
     return render(request, 'categories.html', {'cat':cat.title().replace('-',' '), 'category_posts':category_posts})
 
-@cache_page(CACHE_TTL)
 def CategoryListView(request):
+    cache_page = CACHE_TTL
     cat_menu_list = Category.objects.all()
     return render(request, 'category_list.html', {'cat_menu_list':cat_menu_list})
 
