@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'members',
     'ckeditor',
 
+    'rest_framework',
+
     'django.contrib.sites', # must
     'allauth', # must
     'allauth.account', # must

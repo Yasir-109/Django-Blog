@@ -27,6 +27,7 @@ urlpatterns = [
     path('members/', include('django.contrib.auth.urls')),
     path('members/', include('members.urls')),
     path('accounts/', include('allauth.urls')),
-    path('payment/', include('payments.urls'))
+    path('payment/', include('payments.urls')),
+    path('api/', include('api.urls'))
     # path('logout', LogoutView.as_view())
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
